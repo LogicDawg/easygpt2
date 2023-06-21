@@ -9,6 +9,8 @@ CREATE TABLE users (
 CREATE TABLE requests (
   id SERIAL PRIMARY KEY,
   body TEXT NOT NULL
+  userid INTEGER NOT NULL
+    REFERENCES users ON DELETE CASCADE,
 );
 
 CREATE TABLE response (
