@@ -1,4 +1,5 @@
-import openaiClient from "./api.js"
+// import openaiClient from "./api.js"
+const openaiClient = require("./api.js")
 
 const generate = async (queryDescription) => {
 
@@ -29,4 +30,5 @@ const generate = async (queryDescription) => {
     return await chatGptApi(queryDescription)
 }
 
-export default generate;
+// export default generate;
+module.export = generate;
