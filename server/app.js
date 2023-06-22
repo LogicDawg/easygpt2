@@ -1,7 +1,3 @@
-// import express from "express";
-// import cors from "cors";
-// import generate from "./generate.js";
-const generate = require("./generatesql.js")
 const cors = require("cors")
 const express = require("express")
 const {ExpressError} = require("./expressError.js")
@@ -12,8 +8,11 @@ app.use(express.json());
 app.use(authenticateJWT);
 app.use(cors());
 
+const ai_apicallsRoutes = require("./routes/ai_apicalls.js")
 const userRoutes = require("./routes/users");
 const authRoutes =require("./routes/auth.js");
+
+app.use("/ai_calls",ai_apicallsRoutes)
 app.use("/auth",authRoutes);
 app.use("/users",userRoutes);
 
@@ -32,23 +31,5 @@ app.use(function (err,req,res,next){
     });
 })
 
-const port = process.env.PORT || 3005;
+module.exports = app;
 
-app.get("/", (req,res) => {
-    res.send("hello world from our API")
-})
-
-app.post("/generate", async (req,res) => {
-    const queryDescription = req.body.queryDescription
-    try {
-        const sqlQuery = await generate(queryDescription)
-        res.json({response: sqlQuery})
-    } catch(error) {
-        console.error(error)
-        res.status(500).send("Internal SErver Error")
-    }
-
-})
-app.listen(port, () => {
-    console.log(`Listening on port ${port}`)
-})

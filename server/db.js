@@ -1,16 +1,9 @@
 
 const { Client } = require("pg");
+const { DB_URI } = require("./config")
 
-let DB_URI;
 
-if(process.env.NODE_ENV === "test") {
-    DB_URI = "postgresql:///easygpt_test";
-    
-} else {
-    DB_URI = "postgresql:///easygpt";
-}
-
-let db = new Client({
+const db = new Client({
     connectionString: DB_URI
 })
 

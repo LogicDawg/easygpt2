@@ -1,16 +1,15 @@
 
 CREATE TABLE users (
-  userid SERIAL PRIMARY KEY,
-  username VARCHAR(25),
+  username VARCHAR(25) PRIMARY KEY,
   password TEXT NOT NULL,
   is_admin BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 CREATE TABLE requests (
   id SERIAL PRIMARY KEY,
-  body TEXT NOT NULL
-  userid INTEGER NOT NULL
-    REFERENCES users ON DELETE CASCADE,
+  body TEXT NOT NULL,
+  username VARCHAR(25) NOT NULL
+    REFERENCES users ON DELETE CASCADE
 );
 
 CREATE TABLE response (

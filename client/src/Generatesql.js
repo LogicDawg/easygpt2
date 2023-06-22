@@ -15,7 +15,7 @@ const GenerateSQL= () => {
   }
   
   const generateQuery = async () => {
-    const response = await fetch("http://localhost:3005/generate",{
+    const response = await fetch("http://localhost:3005/ai_calls/generatesql",{
       method: "POST",
       headers: {
         "Content-Type": "application/json"

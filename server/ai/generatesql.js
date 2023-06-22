@@ -1,7 +1,6 @@
-// import openaiClient from "./api.js"
 const openaiClient = require("./api.js")
 
-const generate = async (queryDescription) => {
+const generatesql = async (queryDescription) => {
 
     // const daVinci = async (queryDescription) => {
     // const response = await openaiClient.createCompletion({
@@ -30,5 +29,5 @@ const generate = async (queryDescription) => {
     return await chatGptApi(queryDescription)
 }
 
-// export default generate;
-module.export = generate;
+
+module.exports = generatesql;
