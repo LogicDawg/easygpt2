@@ -48,9 +48,9 @@ class JoblyApi {
     return res.companies;
   }
 
-  static async getJobs(title) {
-    let res = await this.request("jobs", { title });
-    return res.jobs;
+  static async getRequests(username) {
+    let res = await this.request(`users/${username}`);
+    return res.requests;
   }
 
   static async getCurrentUser(username) {
@@ -72,7 +72,7 @@ class JoblyApi {
 
   static async signup(data) {
     let res = await this.request(`auth/register`, data, "post");
-    return res.token;
+    return res;
   }
 
   

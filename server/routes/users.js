@@ -27,7 +27,7 @@ router.get('/:username', async (req,res,next) => {
     const {username} = req.params;
     try{
         const userResults = await db.query('SELECT username,is_admin FROM users WHERE username=$1',[username])
-        const requestResults = await db.query('SELECT id,body FROM requests WHERE username=$1',[username])
+        const requestResults = await db.query('SELECT id,body,response FROM requests WHERE username=$1',[username])
         const user = userResults.rows[0];
         user.requests = requestResults.rows;
 
@@ -44,6 +44,19 @@ router.get('/:username/:requestid', async (req,res,next) => {
         const responseResults = await db.query('SELECT body FROM response WHERE request_id=$1',[requestid])
         const request = requestResults.rows[0];
         request.response = responseResults.rows[0];
+        return res.send(request)
+        
+    } catch (e) {
+        return next(e);
+        
+    }
+});
+
+router.get('/:username/requests', async (req,res,next) => {
+    const {username} = req.params;
+    try {
+        const requestResults = await db.query('SELECT body,response FROM requests WHERE username=$1',[username])
+        const request = requestResults.rows;
         return res.send(request)
         
     } catch (e) {

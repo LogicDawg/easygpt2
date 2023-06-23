@@ -1,6 +1,6 @@
 const express = require("express");
 const router = new express.Router();
-const {ExpressError} = require("../expressError");
+const {ExpressError, BadRequestError} = require("../expressError");
 const db = require("../db");
 const bcrypt = require("bcrypt");
 const {BCRYPT_WORK_FACTOR, SECRET_KEY} = require("../config");
@@ -15,7 +15,8 @@ router.post ('/register', async (req,res,next)=> {
     try{
        const result= jsonschema.validate(req.body,newUserSchema);
         if(!result.valid){
-            return res.json("INVALID DATA")
+            const errs = result.errors.map(e => e.stack);
+            throw new BadRequestError(errs);
         }
         const {username,password} = req.body
         if(!username || !password){

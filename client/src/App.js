@@ -28,6 +28,7 @@ function App() {
       if (token) {
         try {
           let { username } = decodeToken(token);
+          
           JoblyApi.token = token;
           let currentUser = await JoblyApi.getCurrentUser(username);
           setCurrentUser(currentUser);
@@ -73,12 +74,14 @@ function App() {
 
   return (
     <>
+    
     <BrowserRouter>
       <UserContext.Provider value={{ currentUser, setCurrentUser}}>
         <Navbar logout={logout}/>
         <Routes login={login} signup={signup}/>
       </UserContext.Provider>
     </BrowserRouter>
+    
     </>
 
   );

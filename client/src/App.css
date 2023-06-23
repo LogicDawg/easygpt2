@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,34 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+#main-container {
+  place-items: center center;
+}
+
+
+#ai-form{
+  max-width: 330px;
+}
+.form-logo {
+  width:100px; 
+  height:100px;
+}
+
+.modules {
+  margin-top: 40px;
+}
+.module-description{
+  font-size: 14px;
+  color: black;
+}
+
+.module-img {
+  width:150px; 
+  height:150px; 
+}
+
+.module-container:hover{
+  background-color: rgb(102, 202, 253);
 }

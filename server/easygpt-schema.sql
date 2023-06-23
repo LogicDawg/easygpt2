@@ -8,13 +8,14 @@ CREATE TABLE users (
 CREATE TABLE requests (
   id SERIAL PRIMARY KEY,
   body TEXT NOT NULL,
+  response TEXT,
   username VARCHAR(25) NOT NULL
     REFERENCES users ON DELETE CASCADE
 );
 
-CREATE TABLE response (
-  request_id INTEGER
-    REFERENCES requests ON DELETE CASCADE,
-  body TEXT,
-  PRIMARY KEY (request_id)
-);
+-- CREATE TABLE response (
+--   request_id INTEGER
+--     REFERENCES requests ON DELETE CASCADE,
+--   body TEXT,
+--   PRIMARY KEY (request_id)
+-- );

@@ -4,6 +4,8 @@ import Homepage from "../Homepage"
 import Profile from "../Profile";
 import Signup from "../SignupForm";
 import Generatesql from "../gpt/Generatesql"
+import Generateimage from "../gpt/Generateimage"
+import Generateessay from "../gpt/Generateessay";
 import Login from "../LoginForm"
 
 
@@ -38,6 +40,13 @@ const Routes = ({ login, signup }) => {
             <Generatesql />
             </PrivateRoute>
 
+            <PrivateRoute path="/generateimage">
+            <Generateimage />
+            </PrivateRoute>
+
+            <PrivateRoute path="/generateessay">
+            <Generateessay />
+            </PrivateRoute>
             
 {/* 
             <Route exact path="/login">
