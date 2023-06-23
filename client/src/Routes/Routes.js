@@ -1,6 +1,10 @@
 import { Switch, Route, Redirect } from "react-router-dom";
+import PrivateRoute from "./PrivateRoute";
 import Homepage from "../Homepage"
+import Profile from "../Profile";
+import Signup from "../SignupForm";
 import Generatesql from "../Generatesql"
+import Login from "../LoginForm"
 
 
 
@@ -18,6 +22,18 @@ const Routes = ({ login, signup }) => {
             <Generatesql />
             </Route>
 
+            <Route exact path="/login">
+            <Login login={login}/>
+            </Route>
+
+            <Route exact path="/signup">
+            <Signup signup={signup}/>
+            </Route>
+
+            <PrivateRoute path="/profile">
+            <Profile/>
+            </PrivateRoute>
+
             
 {/* 
             <Route exact path="/login">
@@ -25,9 +41,7 @@ const Routes = ({ login, signup }) => {
             </Route>
 
 
-            <Route exact path="/signup">
-            <Signup signup={signup}/>
-            </Route> */}
+ */}
             
             {/* <PrivateRoute exact path="/generatesql">
             <Generatesql />
@@ -41,9 +55,7 @@ const Routes = ({ login, signup }) => {
             <CompanyDetail />
             </PrivateRoute>
 
-            <PrivateRoute path="/profile">
-            <Profile/>
-            </PrivateRoute> */}
+ */}
 
             <Redirect to="/" />
         </Switch>

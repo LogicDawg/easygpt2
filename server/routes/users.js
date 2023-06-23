@@ -1,6 +1,8 @@
 const db = require("../db")
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcrypt");
+const {BCRYPT_WORK_FACTOR, SECRET_KEY} = require("../config");
 
 router.get('/', async (req,res,next) => {
     try{
@@ -53,10 +55,12 @@ router.get('/:username/:requestid', async (req,res,next) => {
 router.patch('/:username', async (req,res,next) => {
     try{
         const {username} = req.params;
-        const {password,is_admin} = req.body;
+        const {password} = req.body;
 
-        const results = await db.query('UPDATE users SET password=$1, is_admin=$2 WHERE username=$3 RETURNING *',
-        [password,is_admin,username])
+        const hashedPassword = await bcrypt.hash(password,BCRYPT_WORK_FACTOR);
+        const results = await db.query('UPDATE users SET password=$1 WHERE username=$2 RETURNING *',
+        [hashedPassword,username])
+        
         return res.send(results.rows[0])
     }catch(e) {
         return next(e);
