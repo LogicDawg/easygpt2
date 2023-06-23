@@ -1,5 +1,5 @@
 import styles from './index.module.css'
-import sqllogo from './assets/sql-logo.png'
+import sqllogo from '../assets/sql-logo.png'
 
 import { useState } from 'react'
 

@@ -3,7 +3,7 @@ import PrivateRoute from "./PrivateRoute";
 import Homepage from "../Homepage"
 import Profile from "../Profile";
 import Signup from "../SignupForm";
-import Generatesql from "../Generatesql"
+import Generatesql from "../gpt/Generatesql"
 import Login from "../LoginForm"
 
 
@@ -18,9 +18,9 @@ const Routes = ({ login, signup }) => {
             <Homepage />
             </Route>
 
-            <Route exact path="/generatesql">
+            {/* <Route exact path="/generatesql">
             <Generatesql />
-            </Route>
+            </Route> */}
 
             <Route exact path="/login">
             <Login login={login}/>
@@ -32,6 +32,10 @@ const Routes = ({ login, signup }) => {
 
             <PrivateRoute path="/profile">
             <Profile/>
+            </PrivateRoute>
+            
+            <PrivateRoute path="/generatesql">
+            <Generatesql />
             </PrivateRoute>
 
             
