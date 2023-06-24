@@ -1,4 +1,4 @@
-const openaiClient = require("./api.js")
+const {openai} = require("./api.js")
 
 const generatesql = async (queryDescription) => {
 
@@ -10,7 +10,7 @@ const generatesql = async (queryDescription) => {
             { "role": "assistant", content: `SELECT * FROM users;`},
             { role: "user", content: `Convert the following natural language description into a SQL query: \n\n${queryDescription}.`}
         ];
-        const response = await openaiClient.createChatCompletion({
+        const response = await openai.createChatCompletion({
             model: "gpt-3.5-turbo",
             messages: messages,
         })
