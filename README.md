@@ -16,4 +16,9 @@ react-bootstrap for styling.
 
 
 #####Server-Side  
+bcrypt for hashing passwords, and verifying.  
+jsonchema to create form validation.  
+openai to make api calls to OpenAI.  
+pg to use postgresql with express.  
+colors to give text color in Console. 
 
