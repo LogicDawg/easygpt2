@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:10000";
+const BASE_URL = process.env.REACT_APP_BASE_URL || "https://easygpt-backend.onrender.com:10000";
 
 /** API Class.
  *
