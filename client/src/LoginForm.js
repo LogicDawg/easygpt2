@@ -15,7 +15,7 @@ function LoginForm({ login }) {
     evt.preventDefault();
     let result = await login(formData);
     if (result.success) {
-      history.push("/companies");
+      history.push("/");
     } else {
       setFormErrors(result.errors);
     }
@@ -51,7 +51,7 @@ function LoginForm({ login }) {
                   <input
                       type="password"
                       name="password"
-                      className="form-control"
+                      className="mb-2 form-control"
                       value={formData.password}
                       onChange={handleChange}
                       autoComplete="current-password"

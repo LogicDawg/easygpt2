@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+
 import Alert from "./Alert";
 
 /** Signup form.
@@ -20,6 +21,7 @@ function SignupForm({ signup }) {
     password: "",
   });
   const [formErrors, setFormErrors] = useState([]);
+  
 
   console.debug(
       "SignupForm",
@@ -37,7 +39,8 @@ function SignupForm({ signup }) {
     evt.preventDefault();
     let result = await signup(formData);
     if (result.success) {
-      history.push("/");
+  
+      history.push("/login");
     } else {
       setFormErrors(result.errors);
     }
@@ -70,7 +73,7 @@ function SignupForm({ signup }) {
                   <input
                       type="password"
                       name="password"
-                      className="form-control"
+                      className="mb-2 form-control"
                       value={formData.password}
                       onChange={handleChange}
                   />

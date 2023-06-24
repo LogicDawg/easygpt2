@@ -1,24 +1,9 @@
 import React, { useState, useContext } from "react";
 import Alert from "./Alert";
-import JoblyApi from "./api/api";
+import EasyGptApi from "./api/api";
 import UserContext from "./UserContext";
 
-// eslint-disable-next-line
-// import useTimedMessage from "../hooks/useTimedMessage";
 
-/** Profile editing form.
- *
- * Displays profile form and handles changes to local form state.
- * Submitting the form calls the API to save, and triggers user reloading
- * throughout the site.
- *
- * Confirmation of a successful save is normally a simple <Alert>, but
- * you can opt-in to our fancy limited-time-display message hook,
- * `useTimedMessage`, but switching the lines below.
- *
- * Routed as /profile
- * Routes -> ProfileForm -> Alert
- */
 
 function ProfileForm() {
   const { currentUser, setCurrentUser } = useContext(UserContext);
@@ -29,9 +14,8 @@ function ProfileForm() {
   });
   const [formErrors, setFormErrors] = useState([]);
 
-  // switch to use our fancy limited-time-display message hook
   const [saveConfirmed, setSaveConfirmed] = useState(false);
-  // const [saveConfirmed, setSaveConfirmed] = useTimedMessage()
+
 
   console.debug(
       "ProfileForm",
@@ -41,13 +25,7 @@ function ProfileForm() {
       "saveConfirmed=", saveConfirmed,
   );
 
-  /** on form submit:
-   * - attempt save to backend & report any errors
-   * - if successful
-   *   - clear previous error messages and password
-   *   - show save-confirmed message
-   *   - set current user info throughout the site
-   */
+
 
   async function handleSubmit(evt) {
     evt.preventDefault();
@@ -64,7 +42,7 @@ function ProfileForm() {
     let updatedUser;
 
     try {
-      updatedUser = await JoblyApi.saveProfile(username, profileData);
+      updatedUser = await EasyGptApi.saveProfile(username, profileData);
     } catch (errors) {
       debugger;
       setFormErrors(errors);

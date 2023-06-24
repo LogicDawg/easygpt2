@@ -1,6 +1,6 @@
 import React, { useState, useEffect,useContext } from "react";
 import UserContext from "./UserContext"
-import JoblyApi from "./api/api";
+import EasyGptApi from "./api/api";
 import RequestCard from "./RequestsCard"
 
 
@@ -15,7 +15,7 @@ const Requests = () => {
     }, []);
 
     async function search(user) {
-        let requests = await JoblyApi.getRequests(user);
+        let requests = await EasyGptApi.getRequests(user);
         setRequests(requests);
         if(requests === null){
             requests = [];

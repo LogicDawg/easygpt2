@@ -3,10 +3,8 @@ import image from '../assets/essay-module.png'
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import Form from 'react-bootstrap/Form';
-
-
-
-import { useState } from 'react'
+import UserContext from "../UserContext"
+import { useState, useContext } from 'react'
 import { Container } from "react-bootstrap";
 
 const GenerateEssay = () => {
@@ -14,13 +12,13 @@ const GenerateEssay = () => {
   const [numWords, setNumWords] = useState("")
   const [essayCreate, setEssayCreate]= useState("")
   const [isLoading,setIsLoading] = useState(false);
+  const { currentUser } = useContext(UserContext);
 
   const onSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     const generatedEssay = await GenerateEssay()
     setEssayCreate(generatedEssay)
-    console.log("Returned from Sserver: ", generatedEssay)
   }
   
   const GenerateEssay = async () => {
@@ -29,7 +27,7 @@ const GenerateEssay = () => {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({essayDescription: essayDescription, numWords: numWords})
+      body: JSON.stringify({username:currentUser.username,essayDescription: essayDescription, numWords: numWords})
     });
 
     const data = await response.json()

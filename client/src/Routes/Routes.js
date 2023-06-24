@@ -20,10 +20,6 @@ const Routes = ({ login, signup }) => {
             <Homepage />
             </Route>
 
-            {/* <Route exact path="/generatesql">
-            <Generatesql />
-            </Route> */}
-
             <Route exact path="/login">
             <Login login={login}/>
             </Route>
@@ -47,28 +43,6 @@ const Routes = ({ login, signup }) => {
             <PrivateRoute path="/generateessay">
             <Generateessay />
             </PrivateRoute>
-            
-{/* 
-            <Route exact path="/login">
-            <Login login={login}/>
-            </Route>
-
-
- */}
-            
-            {/* <PrivateRoute exact path="/generatesql">
-            <Generatesql />
-            </PrivateRoute>
-
-            <PrivateRoute exact path="/jobs">
-            <Jobs/>
-            </PrivateRoute>
-
-            <PrivateRoute exact path="/companies/:handle">
-            <CompanyDetail />
-            </PrivateRoute>
-
- */}
 
             <Redirect to="/" />
         </Switch>

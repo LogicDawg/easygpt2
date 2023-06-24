@@ -13,9 +13,3 @@ CREATE TABLE requests (
     REFERENCES users ON DELETE CASCADE
 );
 
--- CREATE TABLE response (
---   request_id INTEGER
---     REFERENCES requests ON DELETE CASCADE,
---   body TEXT,
---   PRIMARY KEY (request_id)
--- );

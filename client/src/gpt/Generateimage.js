@@ -3,23 +3,21 @@ import image from '../assets/ai_image.png'
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import Form from 'react-bootstrap/Form';
-
-
-
-import { useState } from 'react'
+import UserContext from "../UserContext"
+import { useState,useContext } from 'react'
 import { Container } from "react-bootstrap";
 
 const GenerateImage= () => {
   const [imageDescription, setImageDescription] = useState("")
   const [imageCreate, setImageCreate]= useState("")
   const [isLoading,setIsLoading] = useState(false);
+  const { currentUser } = useContext(UserContext);
 
   const onSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     const generatedImage = await generateImage()
     setImageCreate(generatedImage)
-    console.log("Returned from Sserver: ", generatedImage)
   }
   
   const generateImage = async () => {
@@ -28,7 +26,7 @@ const GenerateImage= () => {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({imageDescription: imageDescription})
+      body: JSON.stringify({username:currentUser.username,imageDescription: imageDescription})
     });
 
     const data = await response.json()

@@ -10,7 +10,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3005";
  *
  */
 
-class JoblyApi {
+class EasyGptApi {
   // the token for interactive with the API will be stored here.
   static token;
 
@@ -20,7 +20,7 @@ class JoblyApi {
     //there are multiple ways to pass an authorization token, this is how you pass it in the header.
     //this has been provided to show you another way to pass the token. you are only expected to read this code for this project.
     const url = `${BASE_URL}/${endpoint}`;
-    const headers = { Authorization: `Bearer ${JoblyApi.token}` };
+    const headers = { Authorization: `Bearer ${EasyGptApi.token}` };
     const params = (method === "get")
         ? data
         : {};
@@ -34,19 +34,7 @@ class JoblyApi {
     }
   }
 
-  // Individual API routes
 
-  /** Get details on a company by handle. */
-
-  static async getCompany(handle) {
-    let res = await this.request(`companies/${handle}`);
-    return res.company;
-  }
-
-  static async getCompanies(name) {
-    let res = await this.request("companies", { name });
-    return res.companies;
-  }
 
   static async getRequests(username) {
     let res = await this.request(`users/${username}`);
@@ -57,11 +45,6 @@ class JoblyApi {
     let res = await this.request(`users/${username}`);
     return res;
   }
-
-  static async applyToJob(username, id) {
-    await this.request(`users/${username}/jobs/${id}`, {}, "post");
-  }
-
 
   static async login(data) {
     let res = await this.request(`auth/login`, data, "post");
@@ -85,8 +68,8 @@ class JoblyApi {
 }
 
 // for now, put token ("testuser" / "password" on class)
-// JoblyApi.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
+// EasyGptApi.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
 //     "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
 //     "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
-    export default JoblyApi;
+    export default EasyGptApi;

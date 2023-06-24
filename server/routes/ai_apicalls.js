@@ -12,7 +12,6 @@ router.post("/generatesql", async (req,res) => {
         const sqlQuery = await generatesql(queryDescription)
         if(res){
         res.json({response: sqlQuery})
-        console.log(username)
         User.addToRequests(username,queryDescription,sqlQuery)
         }
     } catch(error) {
@@ -23,10 +22,14 @@ router.post("/generatesql", async (req,res) => {
 });
 
 router.post("/generateimage", async (req,res) => {
-    const imageDescription = req.body.imageDescription
+    const {username,imageDescription} = req.body
     try {
         const imageCreate = await generateImage(imageDescription)
+        if(res){
         res.json({response: imageCreate})
+        User.addToRequests(username,imageDescription,imageCreate)
+        
+        }
         
     } catch (error) {
         console.error(error)
@@ -36,10 +39,13 @@ router.post("/generateimage", async (req,res) => {
 
 
 router.post("/generateessay", async (req,res) => {
-    const {essayDescription,numWords} = req.body
+    const {username,essayDescription,numWords} = req.body
     try {
         const essayQuery = await generateessaay(essayDescription,numWords)
+        if(res){
         res.json({response: essayQuery})
+        User.addToRequests(username,essayDescription,essayQuery)
+        }
     } catch(error) {
         console.error(error)
         res.status(500).send("Internal SErver Error")

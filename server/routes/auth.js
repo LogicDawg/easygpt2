@@ -64,14 +64,6 @@ router.get('/Testtoken', ensureLoggedIn,(req,res,next) => {
         return next(new ExpressError("Please login first",401))
     }
 })
-// router.get('/admin', ensureAdmin,(req,res,next) => {
-//     try{
-        
-//         return res.json({message: "You are an admin, Admin Dashboard"})
-//     } catch(e) {
-//         return next(new ExpressError("Please login first",401))
-//     }
-// })
 
 module.exports = router;
 

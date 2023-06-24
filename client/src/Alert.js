@@ -1,8 +1,6 @@
 
-
 const Alert = ({ type = "danger", messages = [] }) => {
     
-
     return (
         <div className={`alert alert-${type}`} role="alert">
           {messages.map(error => (

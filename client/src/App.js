@@ -4,7 +4,7 @@ import useLocalStorage from "./useLocalStorage"
 import Navbar from "./Routes/Navbar"
 import Routes from "./Routes/Routes"
 import './App.css';
-import JoblyApi from "./api/api";
+import EasyGptApi from "./api/api";
 import UserContext from "./UserContext";
 import {decodeToken} from "react-jwt"
 
@@ -29,8 +29,8 @@ function App() {
         try {
           let { username } = decodeToken(token);
           
-          JoblyApi.token = token;
-          let currentUser = await JoblyApi.getCurrentUser(username);
+          EasyGptApi.token = token;
+          let currentUser = await EasyGptApi.getCurrentUser(username);
           setCurrentUser(currentUser);
           setApplicationIds(new Set(currentUser.applications));
         } catch (err) {
@@ -47,8 +47,9 @@ function App() {
 
   async function login(loginData) {
     try {
-      let token = await JoblyApi.login(loginData);
+      let token = await EasyGptApi.login(loginData);
       setToken(token);
+
       return { success: true };
     } catch (errors) {
       console.error("login failed", errors);
@@ -63,7 +64,7 @@ function App() {
 
   async function signup(signupData) {
     try {
-      let token = await JoblyApi.signup(signupData);
+      let token = await EasyGptApi.signup(signupData);
       setToken(token);
       return { success: true };
     } catch (errors) {

@@ -3,8 +3,6 @@ import sqllogo from '../assets/sql-logo.png'
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import Form from 'react-bootstrap/Form';
-
-
 import UserContext from "../UserContext"
 import { useState, useContext } from 'react'
 import { Container } from "react-bootstrap";
@@ -20,7 +18,6 @@ const GenerateSQL= () => {
     setIsLoading(true);
     const generatedQuery = await generateQuery()
     setSqlQuery(generatedQuery)
-    console.log("Returned from Sserver: ", generatedQuery)
   }
   
   const generateQuery = async () => {
@@ -29,7 +26,7 @@ const GenerateSQL= () => {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({username:currentUser,queryDescription: queryDescription})
+      body: JSON.stringify({username:currentUser.username,queryDescription: queryDescription})
     });
 
     const data = await response.json()
