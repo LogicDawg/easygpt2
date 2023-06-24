@@ -2,7 +2,7 @@ require("dotenv").config();
 require("colors");
 
 const PORT = +process.env.PORT || 3005;
-
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY || "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";
 const DB_URI = (process.env.NODE_ENV === "test")
     ?"postgresql:///easygpt_test"
     :"postgresql:///easygpt";
@@ -21,6 +21,7 @@ console.log("---");
 
 module.exports = {
     PORT,
+    OPENAI_API_KEY,
     DB_URI,
     SECRET_KEY,
     BCRYPT_WORK_FACTOR
