@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-
+import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 import Alert from "./Alert";
 
 /** Signup form.
@@ -15,6 +16,7 @@ import Alert from "./Alert";
  */
 
 function SignupForm({ signup }) {
+  const [isLoading,setIsLoading] = useState(false);
   const history = useHistory();
   const [formData, setFormData] = useState({
     username: "",
@@ -37,9 +39,10 @@ function SignupForm({ signup }) {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
+    setIsLoading(true);
     let result = await signup(formData);
     if (result.success) {
-  
+      setIsLoading(false)
       history.push("/login");
     } else {
       setFormErrors(result.errors);
@@ -83,14 +86,23 @@ function SignupForm({ signup }) {
                     ? <Alert type="danger" messages={formErrors} />
                     : null
                 }
-
-                <button
+                <Button variant="primary" disabled={isLoading} type='submit'>
+                      {isLoading ?
+                        <Spinner
+                          as="span"
+                          size="sm"
+                          role="status"
+                          aria-hidden="true"
+                        />
+                      : 'Signup'}
+                </Button>
+                {/* <button
                     type="submit"
                     className="btn btn-primary float-right"
                     onSubmit={handleSubmit}
                 >
                   Submit
-                </button>
+                </button> */}
               </form>
             </div>
           </div>

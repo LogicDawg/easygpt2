@@ -14,7 +14,7 @@ const generatesql = async (queryDescription) => {
             model: "gpt-3.5-turbo",
             messages: messages,
         })
-        console.log(response);
+        
         return response.data.choices[0].message.content
     }
 
