@@ -21,7 +21,7 @@ const GenerateSQL= () => {
   }
   
   const generateQuery = async () => {
-    const response = await fetch("http://localhost:3005/ai_calls/generatesql",{
+    const response = await fetch("https://easygpt-backend.onrender.com/ai_calls/generatesql",{
       method: "POST",
       headers: {
         "Content-Type": "application/json"

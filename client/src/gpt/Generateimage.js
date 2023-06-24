@@ -21,7 +21,7 @@ const GenerateImage= () => {
   }
   
   const generateImage = async () => {
-    const response = await fetch("http://localhost:3005/ai_calls/generateimage",{
+    const response = await fetch("https://easygpt-backend.onrender.com/ai_calls/generateimage",{
       method: "POST",
       headers: {
         "Content-Type": "application/json"

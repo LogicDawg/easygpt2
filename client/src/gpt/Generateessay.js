@@ -22,7 +22,7 @@ const GenerateEssay = () => {
   }
   
   const GenerateEssay = async () => {
-    const response = await fetch("http://localhost:3005/ai_calls/generateessay",{
+    const response = await fetch("https://easygpt-backend.onrender.com/ai_calls/generateessay",{
       method: "POST",
       headers: {
         "Content-Type": "application/json"
