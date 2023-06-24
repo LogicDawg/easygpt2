@@ -22,3 +22,16 @@ openai to make api calls to OpenAI.
 pg to use postgresql with express.  
 colors to give text color in Console. 
 
+
+2. Please include the following details:
+a. The title of your site and a link to the URL where it is deployed
+b. Describe what your website does
+c. List the features you implemented and explain why you chose those
+features to implement
+d. Where your tests are and how to run them
+e. Walk someone through the standard user flow for the website
+f. Keep the API in there, and if you have anything to say about the API then
+add some notes. If you have created your own API, please document the
+process.
+g. Identify the technology stack used to create your website
+h. Include anything else that you feel is important to share

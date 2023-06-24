@@ -2,7 +2,7 @@ require("dotenv").config();
 require("colors");
 
 const PORT = +process.env.PORT || 3005;
-//const OPENAI_API_KEY = process.env.OPENAI_API_KEY || "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";
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY || "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";
 const DB_URI = (process.env.NODE_ENV === "test")
     ?"postgres://easygpt_user:7Qu6giqJ9T2XvXKaWPIq45zbbCLoEbde@dpg-cib5tft9aq03rjm87cag-a/easygpt"
     :"postgres://easygpt_user:7Qu6giqJ9T2XvXKaWPIq45zbbCLoEbde@dpg-cib5tft9aq03rjm87cag-a/easygpt";
